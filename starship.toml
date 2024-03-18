@@ -1,0 +1,100 @@
+format = """
+$directory\
+[](fg:#88C0D0 bg:#394260)\
+$git_branch\
+$git_status\
+[](fg:#394260)\
+$fill\
+[](fg:#212736)\
+$nodejs\
+$rust\
+$golang\
+$php\
+[](fg:#1d2230 bg:#212736)\
+$time\
+[](fg:#88C0D0 bg:#1d2230)\
+$os\
+[](fg:#88C0D0)\
+\n$character"""
+
+add_newline = false
+
+[fill]
+symbol = ' '
+
+[os]
+format = "[$symbol]($style)"
+style = "fg:#2E3440 bg:#88C0D0 bold"
+disabled = false
+
+[os.symbols]
+Macos = "  " # nf-fa-apple
+Ubuntu = "  " # nf-linux-ubuntu
+Debian = "  " # nf-linux-debian
+
+[directory]
+style = "fg:#2E3440 bg:#88C0D0 bold"
+format = "[ $path ]($style)"
+truncation_length = 10
+truncate_to_repo = false
+truncation_symbol = "…/"
+
+[directory.substitutions]
+"Documents" = "󰈙 "
+"Downloads" = " "
+"Music" = " "
+"Pictures" = " "
+
+[aws]
+disabled = true
+[gcloud]
+disabled = true
+
+[git_branch]
+symbol = ""
+style = "bg:#394260"
+format = '[[ $symbol $branch ](fg:#769ff0 bg:#394260)]($style)'
+
+[git_status]
+style = "bg:#394260"
+format = '[[($all_status$ahead_behind )](fg:#769ff0 bg:#394260)]($style)'
+
+[nodejs]
+symbol = ""
+style = "bg:#212736"
+format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
+
+[rust]
+symbol = ""
+style = "bg:#212736"
+format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
+
+[golang]
+symbol = ""
+style = "bg:#212736"
+format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
+
+[php]
+symbol = ""
+style = "bg:#212736"
+format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
+
+[time]
+disabled = false
+time_format = "%R" # Hour:Minute Format
+style = "bg:#1d2230"
+format = '[[  $time ](fg:#a0a9cb bg:#1d2230)]($style)'
+
+[character]
+error_symbol = "[❯](bold red)"
+success_symbol = "[❯](bold green)"
+
+[docker_context]
+format = "via [🐋 $context](blue bold)"
+
+[username]
+style_user = "white bold"
+style_root = "black bold"
+format = "[$user]🎷($style) "
+disabled = false
+show_always = true
