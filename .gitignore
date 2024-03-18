@@ -3,8 +3,8 @@
 !README.md
 !.gitignore
 
-!wezterm
-!yabai
-!skhd
+!wezterm/*
+!yabai/*
+!skhd/*
 !starship.toml
 !karabiner/karabiner.json
