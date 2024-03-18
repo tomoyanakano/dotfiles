@@ -1,0 +1,10 @@
+*
+
+!README.md
+!.gitignore
+
+!wezterm
+!yabai
+!skhd
+!starship.toml
+!karabiner/karabiner.json
