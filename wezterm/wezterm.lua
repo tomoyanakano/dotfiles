@@ -29,5 +29,15 @@ config.leader = { key = "q", mods = "CTRL", timeout_milliseconds = 1000 }
 -- window
 config.window_close_confirmation = "AlwaysPrompt"
 
+-- moving tabs
+for i = 1, 8 do
+	-- CTRL+ALT + number to move to that position
+	table.insert(config.keys, {
+		key = tostring(i),
+		mods = "CTRL|ALT",
+		action = wezterm.action.MoveTab(i - 1),
+	})
+end
+
 -- and finally, return the configuration to wezterm
 return config
