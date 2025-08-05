@@ -5,6 +5,7 @@ files_and_paths=(
   ".config/yabai:~/.config/yabai"
   ".config/skhd:~/.config/skhd"
   ".config/starship.toml:~/.config/starship.toml"
+  ".gitconfig:~/.gitconfig"
 )
 
 create_symlink() {

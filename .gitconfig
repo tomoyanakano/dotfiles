@@ -1,0 +1,30 @@
+[uesr]
+	email = tomo1999724@gmail.com
+[user]
+	email = tomo1999724@gmail.com
+	name = tomoyanakano
+[init]
+	defaultBranch = main
+[alias]
+  delete-merged = "!f () { git checkout $1; git branch --merged|egrep -v '\\*|develop|main'|xargs git branch -d; };f"
+  st = status
+	b = branch
+	unstage = reset HEAD --
+	undo = reset HEAD~1
+
+
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+
+[alias]
+  ci = commit
+  co = checkout
+  br = branch
+  st = status
+  unstage = reset HEAD --
+  undo = reset HEAD~1
+  gmm = "!git fetch origin && git merge origin/main"
+
