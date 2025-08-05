@@ -1,6 +1,7 @@
 [user]
 	email = github@tomoyanakano.com
 	name = tomoyanakano
+
 [init]
 	defaultBranch = main
 [alias]

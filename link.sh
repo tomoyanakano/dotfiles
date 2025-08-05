@@ -1,4 +1,7 @@
 #!/bin/bash
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
 files_and_paths=(
   ".config/karabiner:~/.config/karabiner"
   ".config/wezterm:~/.config/wezterm"
@@ -9,11 +12,24 @@ files_and_paths=(
 )
 
 create_symlink() {
-  local source_file=$(realpath "$1")
+  local source_file="$SCRIPT_DIR/$1"
   local destination_path="$2"
   
   # チルダを展開
   destination_path="${destination_path/#\~/$HOME}"
+
+   
+  # ソースファイルが存在するかチェック
+  if [ ! -e "$source_file" ]; then
+    echo "⚠️  スキップ: ソースファイルが存在しません: $source_file"
+    return 1
+  fi
+  
+  # 既に正しいシンボリックリンクが存在するかチェック
+  if [ -L "$destination_path" ] && [ "$(readlink "$destination_path")" = "$source_file" ]; then
+    echo "✅ スキップ: 正しいシンボリックリンクが既に存在します: $destination_path"
+    return 0
+  fi
   
   # 宛先の親ディレクトリが存在しない場合は作成
   local destination_dir=$(dirname "$destination_path")
