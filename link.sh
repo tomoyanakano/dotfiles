@@ -8,7 +8,13 @@ files_and_paths=(
   ".config/yabai:~/.config/yabai"
   ".config/skhd:~/.config/skhd"
   ".config/starship.toml:~/.config/starship.toml"
+  ".config/yazi:~/.config/yazi"
   ".gitconfig:~/.gitconfig"
+  ".hammerspoon/init.lua:~/.hammerspoon/init.lua"
+  ".claude/agents:~/.claude/agents"
+  ".claude/commands:~/.claude/commands"
+  ".claude/skills:~/.claude/skills"
+  ".claude/rules:~/.claude/rules"
 )
 
 create_symlink() {

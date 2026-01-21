@@ -45,6 +45,7 @@ return {
 		{ key = "4", mods = "SUPER", action = act.ActivateTab(3) },
 		{ key = "5", mods = "SHIFT|CTRL", action = act.ActivateTab(4) },
 		{ key = "d", mods = "SUPER", action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
+		{ key = "d", mods = "SHIFT|SUPER", action = act.SplitVertical({ domain = "CurrentPaneDomain" }) },
 		{ key = "5", mods = "SUPER", action = act.ActivateTab(4) },
 		{ key = "6", mods = "SHIFT|CTRL", action = act.ActivateTab(5) },
 		{ key = "6", mods = "SUPER", action = act.ActivateTab(5) },
