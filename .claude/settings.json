@@ -1,0 +1,112 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "env": {
+    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
+  },
+  "permissions": {
+    "allow": [
+      "Bash(npm run lint)",
+      "Bash(npm run test:*)",
+      "Write(src/**/*.ts)",
+      "Write(app/**/*.ts)",
+      "mcp__pencil"
+    ],
+    "ask": [
+      "Bash(git push *)",
+      "Bash(git merge *)",
+      "Bash(git branch -D *)",
+      "Bash(git stash drop *)"
+    ],
+    "deny": [
+      "Bash(rm -rf:*)",
+      "Bash(rm -r:*)",
+      "Bash(curl:*)",
+      "Bash(wget:*)",
+      "Bash(sudo:*)",
+      "Bash(ssh:*)",
+      "Bash(scp:*)",
+      "Bash(rsync:*)",
+      "Bash(git push --force:*)",
+      "Bash(git push -f:*)",
+      "Bash(git reset --hard:*)",
+      "Bash(git clean -f:*)",
+      "Bash(git rebase:*)",
+      "Bash(git commit --amend:*)",
+      "Write(/etc/*)",
+      "Write(.env*)",
+      "Write(**/.env*)",
+      "Write(**/secrets/**)",
+      "Write(**/credentials/**)",
+      "Read(.env)",
+      "Read(.env.*)",
+      "Read(**/.env)",
+      "Read(**/.env.*)",
+      "Read(**/id_rsa*)",
+      "Read(**/id_ed25519*)",
+      "Read(**/.aws/credentials)",
+      "Read(**/*secret*)",
+      "Read(**/*token*)",
+      "Read(~/.zshrc)"
+    ]
+  },
+  "model": "opus",
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/hooks/block-dangerous-git.sh"
+          }
+        ]
+      },
+      {
+        "matcher": "Read|Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/hooks/block-secret-access.sh"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "terminal-notifier -title 'Claude Code' -message 'タスクが完了しました、確認をしてください👌' -activate com.github.wez.wezterm -sound default -contentImage '/Users/nakanotomoya/projects/projects/treasureplanet/logo.png'"
+          }
+        ]
+      }
+    ],
+    "Notification": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "terminal-notifier -title 'Claude Code' -message 'ユーザー確認待ちです👀' -activate com.github.wez.wezterm -sound default -contentImage '/Users/nakanotomoya/projects/projects/treasureplanet/logo.png'"
+          }
+        ]
+      }
+    ]
+  },
+  "enabledPlugins": {
+    "javascript-typescript@claude-code-workflows": true,
+    "backend-development@claude-code-workflows": true,
+    "cloud-infrastructure@claude-code-workflows": true,
+    "code-review-ai@claude-code-workflows": true,
+    "security-scanning@claude-code-workflows": true,
+    "full-stack-orchestration@claude-code-workflows": true,
+    "rust-analyzer-lsp@claude-plugins-official": true,
+    "code-simplifier@claude-plugins-official": true,
+    "slack@claude-plugins-official": true
+  },
+  "alwaysThinkingEnabled": true,
+  "feedbackSurveyState": {
+    "lastShownTime": 1754028678273
+  }
+}

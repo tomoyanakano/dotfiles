@@ -15,6 +15,8 @@ files_and_paths=(
   ".claude/commands:~/.claude/commands"
   ".claude/skills:~/.claude/skills"
   ".claude/rules:~/.claude/rules"
+  ".claude/hooks:~/.claude/hooks"
+  ".claude/settings.json:~/.claude/settings.json"
 )
 
 create_symlink() {
