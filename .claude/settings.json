@@ -11,12 +11,6 @@
       "Write(app/**/*.ts)",
       "mcp__pencil"
     ],
-    "ask": [
-      "Bash(git push *)",
-      "Bash(git merge *)",
-      "Bash(git branch -D *)",
-      "Bash(git stash drop *)"
-    ],
     "deny": [
       "Bash(rm -rf:*)",
       "Bash(rm -r:*)",
@@ -47,6 +41,12 @@
       "Read(**/*secret*)",
       "Read(**/*token*)",
       "Read(~/.zshrc)"
+    ],
+    "ask": [
+      "Bash(git push *)",
+      "Bash(git merge *)",
+      "Bash(git branch -D *)",
+      "Bash(git stash drop *)"
     ]
   },
   "model": "opus",
@@ -69,6 +69,35 @@
             "command": "~/.claude/hooks/block-secret-access.sh"
           }
         ]
+      },
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/hooks/rtk-rewrite.sh"
+          }
+        ]
+      },
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/hooks/send_observability.sh PreToolUse"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/hooks/send_observability.sh PostToolUse"
+          }
+        ]
       }
     ],
     "Stop": [
@@ -78,6 +107,10 @@
           {
             "type": "command",
             "command": "terminal-notifier -title 'Claude Code' -message 'タスクが完了しました、確認をしてください👌' -activate com.github.wez.wezterm -sound default -contentImage '/Users/nakanotomoya/projects/projects/treasureplanet/logo.png'"
+          },
+          {
+            "type": "command",
+            "command": "~/.claude/hooks/send_observability.sh Stop --add-chat"
           }
         ]
       }
@@ -89,6 +122,65 @@
           {
             "type": "command",
             "command": "terminal-notifier -title 'Claude Code' -message 'ユーザー確認待ちです👀' -activate com.github.wez.wezterm -sound default -contentImage '/Users/nakanotomoya/projects/projects/treasureplanet/logo.png'"
+          },
+          {
+            "type": "command",
+            "command": "~/.claude/hooks/send_observability.sh Notification"
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/hooks/send_observability.sh SessionStart"
+          }
+        ]
+      }
+    ],
+    "SessionEnd": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/hooks/send_observability.sh SessionEnd"
+          }
+        ]
+      }
+    ],
+    "SubagentStart": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/hooks/send_observability.sh SubagentStart"
+          }
+        ]
+      }
+    ],
+    "SubagentStop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/hooks/send_observability.sh SubagentStop"
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/hooks/send_observability.sh UserPromptSubmit"
           }
         ]
       }
@@ -103,10 +195,9 @@
     "full-stack-orchestration@claude-code-workflows": true,
     "rust-analyzer-lsp@claude-plugins-official": true,
     "code-simplifier@claude-plugins-official": true,
-    "slack@claude-plugins-official": true
+    "slack@claude-plugins-official": true,
+    "clangd-lsp@claude-plugins-official": true
   },
   "alwaysThinkingEnabled": true,
-  "feedbackSurveyState": {
-    "lastShownTime": 1754028678273
-  }
+  "skipDangerousModePermissionPrompt": true
 }

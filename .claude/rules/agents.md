@@ -39,6 +39,22 @@ Launch 3 agents in parallel:
 First agent 1, then agent 2, then agent 3
 ```
 
+## Agent Shutdown & Process Cleanup
+
+エージェントをシャットダウンする際、子プロセス（vitest, tsc, build等）が孤立プロセスとして残る可能性がある。
+
+**必須手順:**
+1. エージェントに `shutdown_request` を送る**前に**、実行中のテスト/ビルドの完了を確認
+2. 全エージェントシャットダウン後、孤立プロセスを確認・削除:
+   ```bash
+   ps aux | grep -E "vitest|tsc|remix" | grep -v grep
+   pkill -f vitest  # 必要に応じて
+   ```
+3. チーム作業完了時のチェックリスト:
+   - [ ] 全エージェントがシャットダウン済み
+   - [ ] 孤立プロセスなし
+   - [ ] TeamDelete 実行済み
+
 ## Multi-Perspective Analysis
 
 For complex problems, use split role sub-agents:

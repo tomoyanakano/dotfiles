@@ -5,6 +5,7 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 files_and_paths=(
   ".config/karabiner:~/.config/karabiner"
   ".config/wezterm:~/.config/wezterm"
+  ".config/ghostty:~/.config/ghostty"
   ".config/yabai:~/.config/yabai"
   ".config/skhd:~/.config/skhd"
   ".config/starship.toml:~/.config/starship.toml"
@@ -16,7 +17,8 @@ files_and_paths=(
   ".claude/skills:~/.claude/skills"
   ".claude/rules:~/.claude/rules"
   ".claude/hooks:~/.claude/hooks"
-  ".claude/settings.json:~/.claude/settings.json"
+  ".claude/settings.json:~/.claude/settings.json",
+  ".tmux.conf:~/.tmux.conf"
 )
 
 create_symlink() {

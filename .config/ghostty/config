@@ -1,0 +1,49 @@
+# Ghostty Configuration
+# WezTerm設定に合わせた外観設定
+
+# Font (WezTerm: 0xProto, size 14)
+font-family = 0xProto
+font-size = 14
+
+# Color scheme (WezTerm: Nord)
+theme = nord
+
+# Background transparency (WezTerm: opacity 0.7, blur 20)
+background-opacity = 0.7
+background-blur = 20
+unfocused-split-opacity = 0.9
+
+# macOS specific
+macos-titlebar-style = hidden
+macos-window-shadow = false
+
+# Window
+window-padding-x = 4
+window-padding-y = 4
+# Tab bar (WezTerm: always show tabs)
+gtk-tabs-location = top
+
+# Cursor
+cursor-style = block
+cursor-style-blink = false
+
+# Mouse
+mouse-hide-while-typing = true
+
+# Clipboard
+clipboard-paste-protection = false
+copy-on-select = clipboard
+
+# Misc
+confirm-close-surface = true
+auto-update = check
+
+# Pane navigation (tmux + vim style: Ctrl+f leader key)
+keybind = ctrl+f>h=goto_split:left
+keybind = ctrl+f>j=goto_split:bottom
+keybind = ctrl+f>k=goto_split:top
+keybind = ctrl+f>l=goto_split:right
+keybind = ctrl+f>v=new_split:right
+keybind = ctrl+f>s=new_split:down
+keybind = ctrl+f>n=next_workspace
+keybind = ctrl+f>p=previous_workspace
