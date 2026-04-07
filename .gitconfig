@@ -1,6 +1,5 @@
-[user]
-	email = tomo1999724@gmail.com
-	name = tomoyanakano
+[include]
+	path = ~/.gitconfig.local
 
 [init]
 	defaultBranch = main

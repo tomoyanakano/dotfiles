@@ -17,6 +17,7 @@ files_and_paths=(
   ".claude/skills:~/.claude/skills"
   ".claude/rules:~/.claude/rules"
   ".claude/hooks:~/.claude/hooks"
+  ".claude/orchestration:~/.claude/orchestration"
   ".claude/settings.json:~/.claude/settings.json",
   ".tmux.conf:~/.tmux.conf"
 )
