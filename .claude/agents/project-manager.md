@@ -33,6 +33,11 @@ All state lives in `.claude/orchestration/`:
 
 1. Receive issue numbers + priority order from human
 2. `cmux identify` でManagerのsurface IDを取得（タスクファイルの `manager_surface` に設定）
+3. ManagerのworkspaceをPurpleに色付けし、名前を `M: manager` にリネーム:
+   ```bash
+   cmux workspace-action --workspace {manager_workspace_id} --action set-color --color Purple
+   cmux workspace-action --workspace {manager_workspace_id} --action rename --title "M: manager"
+   ```
 3. For each issue, fetch details: `gh issue view {number}`
 3. Decompose each issue into concrete tasks:
    - Each task = one focused unit of work (implement, test, fix)
@@ -79,7 +84,7 @@ After human approves:
 git worktree add .worktrees/issue-{number} -b issue-{number} origin/main
 
 # b. Issue用のworkspace作成（名前付き、worktreeディレクトリで起動）
-cmux new-workspace --name "issue-{number}-{short-title}" --cwd $(pwd)/.worktrees/issue-{number}
+cmux new-workspace --name "W: issue-{number}-{short-title}" --cwd $(pwd)/.worktrees/issue-{number}
 # 出力からworkspace IDを取得
 
 # c. 作成されたworkspaceのsurface IDを取得
