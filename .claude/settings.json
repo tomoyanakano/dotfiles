@@ -10,7 +10,13 @@
       "Write(src/**/*.ts)",
       "Write(app/**/*.ts)",
       "Write(.claude/orchestration/**)",
-      "mcp__pencil"
+      "mcp__pencil",
+      "Bash(cmux *)",
+      "Bash(git worktree *)",
+      "Bash(git fetch *)",
+      "Bash(gh issue *)",
+      "Bash(gh pr *)",
+      "Bash(sleep *)"
     ],
     "deny": [
       "Bash(rm -rf:*)",
@@ -50,6 +56,7 @@
       "Bash(git stash drop *)"
     ]
   },
+  "model": "opusplan",
   "hooks": {
     "PreToolUse": [
       {
@@ -117,5 +124,13 @@
     "clangd-lsp@claude-plugins-official": true
   },
   "alwaysThinkingEnabled": true,
-  "skipDangerousModePermissionPrompt": true
+  "skipDangerousModePermissionPrompt": true,
+  "extraKnownMarketplaces": {
+    "shopify-ai-toolkit": {
+      "source": {
+        "source": "github",
+        "repo": "Shopify/shopify-ai-toolkit"
+      }
+    }
+  }
 }

@@ -142,13 +142,14 @@ cmux workspace-action --workspace {workspace} --action set-color --color Red
 
 ### Step 8: Managerへ完了通知
 
-タスクファイルの `manager_surface` を使って、Managerセッションにステータス更新を送信:
+タスクファイルの `manager_surface` を使って、Managerセッションにクリーンアップを依頼:
 
 ```bash
-cmux send --surface {manager_surface} "/manage status\n"
+cmux send --surface {manager_surface} "/manage cleanup\n"
 ```
 
-これによりManagerが自動的にステータスを確認し、人間に最新状況を表示する。
+これによりManagerが自動的に完了済みworkspace/worktreeを検出・削除し、人間に最新状況を表示する。
+（`/manage status` ではなく `/manage cleanup` を使うことで、状態ファイルがなくても確実にクリーンアップが走る）
 
 ## Important Rules
 
