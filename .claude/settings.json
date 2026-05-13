@@ -10,6 +10,8 @@
       "Write(src/**/*.ts)",
       "Write(app/**/*.ts)",
       "Write(.claude/orchestration/**)",
+      "Write(.claude/orchestration/results/**)",
+      "Write(.worktrees/**/.claude/orchestration/**)",
       "mcp__pencil",
       "Bash(cmux *)",
       "Bash(git worktree *)",
@@ -121,10 +123,10 @@
     "rust-analyzer-lsp@claude-plugins-official": true,
     "code-simplifier@claude-plugins-official": true,
     "slack@claude-plugins-official": true,
-    "clangd-lsp@claude-plugins-official": true
+    "clangd-lsp@claude-plugins-official": true,
+    "vercel@claude-plugins-official": true,
+    "shopify-plugin@shopify-ai-toolkit": true
   },
-  "alwaysThinkingEnabled": true,
-  "skipDangerousModePermissionPrompt": true,
   "extraKnownMarketplaces": {
     "shopify-ai-toolkit": {
       "source": {
@@ -132,5 +134,9 @@
         "repo": "Shopify/shopify-ai-toolkit"
       }
     }
-  }
+  },
+  "alwaysThinkingEnabled": true,
+  "skipDangerousModePermissionPrompt": true,
+  "preferredNotifChannel": "terminal_bell",
+  "remoteControlAtStartup": true
 }
